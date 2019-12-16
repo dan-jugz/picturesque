@@ -54,3 +54,12 @@ class TestModelImages(TestCase):
         searched_images = Image.search_category(searched_category)
         self.assertEqual(len(searched_images),2)
 
+    def test_str(self):
+        self.new_image.save_image()
+        self.another_image = Image(image = "fj_cruiser.png",image_name = "fj_cruiser",image_description = "cool picture",image_post_date = "2019-10-o4",image_photographer = "munene",category = self.categ,location = self.locate)
+        self.another_image.save_image()
+        result = Image.objects.filter(image_name = "fj_cruiser")
+        final = self.another_image.__str__()
+        self.assertEqual(final,result[0].image_name)
+        
+
