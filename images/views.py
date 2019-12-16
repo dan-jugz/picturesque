@@ -22,6 +22,9 @@ def search_results(request):
 
 
 def fullimage(request,image_id):
-    the_image = Image.objects.get(id = image_id)
-    
+    try:
+        the_image = Image.objects.get(id = image_id)
+    except DoesNotExist:
+        return Http404
+  
     return render(request,'fullimage.html',{"image":the_image})
