@@ -75,3 +75,8 @@ class TestLocation(TestCase):
         self.new_location.save_location()
         location_length = Location.objects.all()
         self.assertTrue(len(location_length) > 0)
+
+    def test_display_locations(self):
+        self.new_location.save_location()
+        all_locations = Location.display_locations()
+        self.assertEqual(len(all_locations),1)
