@@ -53,3 +53,16 @@ class Image(models.Model):
     def display_images(cls):
         images = cls.objects.all()
         return images
+
+    
+    @classmethod
+    def search_category(cls,searched_category):
+        get_cate_id = Category.objects.filter(category__icontains = searched_category)
+        ids = len(get_cate_id) 
+        all_images = []
+        for an_id in range(ids):
+            images = cls.objects.filter(category__in = [get_cate_id[an_id].id])
+            all_images.append(images)
+        return all_images
+
+        
