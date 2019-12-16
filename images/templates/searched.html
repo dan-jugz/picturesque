@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+
+
+<div class="container">
+  <div class="row">
+    {% if images %}
+      <h5 class="text-center">Found photos from {{images|length}} categories of searched category {{message}}</h5>
+    {% else %}
+      <h5 class="text-center">Found 0 items of searched category {{message}} </h5>
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+    {% for all_images in images %}
+
+  {% if all_images %}
+    {% for an_image in all_images %}
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <div class="card" data-toggle="modal" data-target="#{{an_image.id}}">
+              <img src="{{an_image.image.url}}" alt="{{an_image.image.name}}" class="card-img">
+          </div>
+            <div class="modal fade " id="{{an_image.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+               <div class="modal-content modalcard">
+                   <div class="modal-header">
+                       <h5 class="modal-title d-block mx-auto text-center text-monospace" id="imageheader">{{an_image.image_name}}</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+                   <div class="modal-body">
+                       <img src="{{an_image.image.url}}" alt="{{image.name}}" class="img-fluid">
+                       <p class="imgdesc text-center text-monospace">{{an_image.image_description}}</p>
+                       <p class="text-monospace"><i class="fas fa-user"></i> {{an_image.image_photographer}}</p>
+                       <p class="text-monospace"><i class="fas fa-calendar-day"></i> {{an_image.image_post_date}}</p>
+                       <p class="text-monospace"><i class="fas fa-globe-africa"></i> {{an_image.location}}</p>
+                       <p class="text-monospace">catogory : {{an_image.category}}</p>
+                   </div>
+                   <div class="modal-footer">
+                      <input class="form-control input-lg" type="text"
+                           value="{{an_image.image.url}}" id="{{an_image.id}}.url">
+                       <button class="btn btn-success btn-sm" onclick="copyLink('{{an_image.id}}.url')">Copy</button>
+                   </div>
+               </div>
+           </div>
+          </div>
+      </div> 
+    {% empty %}
+      <div class="alert alert-danger">
+        <h5 class="text-center">Seems like no uploads yet</h5>
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% endblock %}
