@@ -29,5 +29,10 @@ class TestModelImages(TestCase):
         dt = Image.objects.all()
         self.assertEqual(len(dt),1)
 
-    
+    def test_display_images(self):
+        self.new_image.save_image()
+        self.another_image = Image(image = "fj_cruiser.png",image_name = "fj_cruiser",image_description = "cool picture",image_post_date = "2019-10-o4",image_photographer = "munene",category = self.categ,location = self.locate)
+        self.another_image.save_image()
+        dt = Image.display_images()
+        self.assertEqual(len(dt),2)
 
