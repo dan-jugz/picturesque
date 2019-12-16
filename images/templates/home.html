@@ -14,7 +14,7 @@
   <div class="row">
   {% for an_image in images %}
     {% if location == an_image.location %}
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column">
       <div class="card" data-toggle="modal" data-target="#{{an_image.id}}">
           <img src="{{an_image.image.url}}" alt="{{an_image.image.name}}" class="card-img">
       </div>
