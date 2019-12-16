@@ -80,3 +80,15 @@ class TestLocation(TestCase):
         self.new_location.save_location()
         all_locations = Location.display_locations()
         self.assertEqual(len(all_locations),1)
+
+
+class TestCategory(TestCase):
+    def setUp(self):
+        self.new_category = Category(category = "adventure")
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_category,Category))
+
+    def test_save(self):
+        self.new_category.save_category()
+        self.assertTrue(len(Category.objects.all()) > 0)
