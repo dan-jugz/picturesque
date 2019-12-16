@@ -9,3 +9,8 @@ def home(request):
     return render (request,'home.html',{"images":images,"locations":locations})
 
 
+def search_results(request):
+    search = request.GET.get('searched_category')
+    searched_images = Image.search_category(search)
+    message = f'{search}'
+    return render (request,'searched.html',{"images":searched_images,"message":message})
