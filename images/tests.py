@@ -70,3 +70,8 @@ class TestLocation(TestCase):
     def test_locationInstance(self):
         self.assertTrue(isinstance(self.new_location,Location))
 
+
+    def test_save_location(self):
+        self.new_location.save_location()
+        location_length = Location.objects.all()
+        self.assertTrue(len(location_length) > 0)
