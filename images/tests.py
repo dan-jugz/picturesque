@@ -62,4 +62,11 @@ class TestModelImages(TestCase):
         final = self.another_image.__str__()
         self.assertEqual(final,result[0].image_name)
         
+    
+class TestLocation(TestCase):
+    def setUp(self):
+        self.new_location = Location(location = "dubai",date_taken = "2019-10-04")
+
+    def test_locationInstance(self):
+        self.assertTrue(isinstance(self.new_location,Location))
 
