@@ -38,7 +38,7 @@
                </div>
                <div class="modal-footer">
                   <input class="form-control input-lg" type="text"
-                       value="https://mugendigallery.herokuapp.com{{an_image.image.url}}" id="{{an_image.id}}.url">
+                       value="{{an_image.image.url}}" id="{{an_image.id}}.url">
                    <button class="btn btn-success btn-sm" onclick="copyLink('{{an_image.id}}.url')">Copy</button>
                   <a href="{% url 'fullimage' an_image.id %}" class="btn btn-outline-info btn-sm">view full image</a>
                </div>
@@ -49,7 +49,7 @@
     {% endif %}
     {% empty %}
     <div class="alert alert-danger">
-      <h3 class="text-center">Seems no images are available</h3>
+      <h3 class="text-center">There's no available images.</h3>
     </div>
   {% endfor %}
 </div>
