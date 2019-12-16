@@ -45,14 +45,12 @@ class TestModelImages(TestCase):
         search1 = Image.search(search_term)
         search2 = Image.objects.filter(image_name__icontains = search_term)
         self.assertEqual(len(search2),len(search1))
-
-
-    def test_delete_image(self):
+  
+    def test_search_category(self):
         self.new_image.save_image()
         self.another_image = Image(image = "fj_cruiser.png",image_name = "fj_cruiser",image_description = "cool picture",image_post_date = "2019-10-o4",image_photographer = "munene",category = self.categ,location = self.locate)
         self.another_image.save_image()
-        self.new_image.delete_image()
-        dt = Image.objects.all()
-        self.assertEqual(len(dt),1)
-
+        searched_category = "travels"
+        searched_images = Image.search_category(searched_category)
+        self.assertEqual(len(searched_images),2)
 
