@@ -45,6 +45,9 @@ class Image(models.Model):
     def __str__(self):
         return self.image_name
 
+    def delete_image(self):
+        self.delete()
+
 
     @classmethod
     def display_images(cls):
