@@ -16,6 +16,8 @@ font-family: 'Kalam', cursive;
 }
 body{
 background-image: url('static/images/bgimage.jpeg');
+background-image: linear-gradient(to bottom, rgb(4, 44, 9), rgb(21, 188, 6));
+color: wheat;
 }
 .row {
 display: flex;
